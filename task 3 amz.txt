@@ -1,0 +1,86 @@
+import os
+
+class TodoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def view_tasks(self):
+        if self.tasks:
+            print("Tasks:")
+            for i, task in enumerate(self.tasks, 1):
+                print(f"{i}. {task}")
+        else:
+            print("No tasks found.")
+
+    def edit_task(self, task_index, new_task):
+        if 1 <= task_index <= len(self.tasks):
+            self.tasks[task_index - 1] = new_task
+            print("Task edited successfully.")
+        else:
+            print("Invalid task index.")
+
+    def delete_task(self, task_index):
+        if 1 <= task_index <= len(self.tasks):
+            deleted_task = self.tasks.pop(task_index - 1)
+            print(f"Task '{deleted_task}' deleted successfully.")
+        else:
+            print("Invalid task index.")
+
+    def save_tasks_to_file(self, filename):
+        with open(filename, "w") as file:
+            for task in self.tasks:
+                file.write(task + "\n")
+
+    def load_tasks_from_file(self, filename):
+        if os.path.exists(filename):
+            with open(filename, "r") as file:
+                self.tasks = file.read().splitlines()
+
+def main():
+    todo_list = TodoList()
+    filename = "tasks.txt"
+
+    # Load tasks from the file when the program starts
+    todo_list.load_tasks_from_file(filename)
+
+    while True:
+        print("\nTodo List Application")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Edit Task")
+        print("4. Delete Task")
+        print("5. Save and Quit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            task = input("Enter a new task: ")
+            todo_list.add_task(task)
+            print("Task added successfully!")
+
+        elif choice == "2":
+            todo_list.view_tasks()
+
+        elif choice == "3":
+            task_index = int(input("Enter the task number to edit: "))
+            new_task = input("Enter the new task description: ")
+            todo_list.edit_task(task_index, new_task)
+
+        elif choice == "4":
+            task_index = int(input("Enter the task number to delete: "))
+            todo_list.delete_task(task_index)
+
+        elif choice == "5":
+            todo_list.save_tasks_to_file(filename)
+            print("Tasks saved. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
