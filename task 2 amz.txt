@@ -1,0 +1,57 @@
+1. Create User-Defined Functions:
+
+Here's an example of a Python program that defines and uses user-defined functions:
+
+# User-defined function to calculate the square of a number
+def square(number):
+    return number ** 2
+
+# User-defined function to check if a number is even
+def is_even(number):
+    return number % 2 == 0
+
+# User-defined function to greet a person
+def greet(name):
+    return f"Hello, {name}!"
+
+# Using the functions
+result = square(5)
+print(f"Square of 5 is {result}")
+
+number = 10
+if is_even(number):
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")
+
+message = greet("Alice")
+print(message)
+
+2. Explore Built-In Python Modules:
+
+Python comes with a variety of built-in modules that you can use for various tasks. Here's an example of using the math module to calculate the square root of a number:
+
+
+import math
+
+number = 16
+square_root = math.sqrt(number)
+print(f"Square root of {number} is {square_root}")
+You can explore the Python standard library for many more built-in modules like os, datetime, random, and more.
+
+3. Use External Modules from PyPI:
+
+You can install and use external modules from the Python Package Index (PyPI) using pip. Here's an example of using the requests module to make an HTTP GET request:
+
+
+import requests
+
+url = "https://www.example.com"
+response = requests.get(url)
+
+if response.status_code == 200:
+    print("Request was successful.")
+    print("Response content:")
+    print(response.text)
+else:
+    print(f"Request failed with status code {response.status_code}")
