@@ -1,0 +1,69 @@
+1. Principles of Object-Oriented Programming in Python:
+
+a. Classes: In Python, a class is a blueprint for creating objects. It defines the structure and behavior that the objects will have. You can create a class using the class keyword.
+
+b. Objects: Objects are instances of classes. They represent real-world entities and encapsulate data (attributes) and behaviors (methods) related to those entities.
+
+c. Inheritance: Inheritance is a mechanism where one class (subclass or derived class) can inherit attributes and methods from another class (base class or parent class). This promotes code reuse and the creation of a hierarchy of classes.
+
+d. Encapsulation: Encapsulation refers to the practice of bundling data (attributes) and methods (functions) that operate on the data into a single unit (class). This helps in hiding the internal details of a class and exposing only what is necessary for the outside world.
+
+e. Polymorphism: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables you to write code that can work with objects of various classes in a uniform way.
+
+2. Creating Classes and Objects to Represent Real-World Entities:
+
+Let's create a simple example of a Person class to represent real-world individuals:
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        return f"Hi, I'm {self.name} and I'm {self.age} years old."
+
+# Creating objects
+person1 = Person("Alice", 30)
+person2 = Person("Bob", 25)
+
+# Accessing attributes and methods
+print(person1.introduce())  # Output: Hi, I'm Alice and I'm 30 years old.
+print(person2.introduce())  # Output: Hi, I'm Bob and I'm 25 years old.
+3. Implementing Inheritance, Encapsulation, and Polymorphism:
+
+Inheritance: Let's create a Student class that inherits from Person and adds some specific attributes and methods:
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)
+        self.student_id = student_id
+
+    def study(self):
+        return f"{self.name} is studying."
+
+student = Student("Charlie", 20, "S12345")
+print(student.introduce())  # Output: Hi, I'm Charlie and I'm 20 years old.
+print(student.study())      # Output: Charlie is studying.
+Encapsulation: In Python, you can use underscores to indicate the visibility of attributes and methods. For example, you can use _name for protected attributes and __name for private attributes.
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self._account_number = account_number  # Protected attribute
+        self.__balance = balance              # Private attribute
+
+    def get_balance(self):
+        return self.__balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+
+account = BankAccount("123456", 1000)
+print(account.get_balance())  # Output: 1000
+Polymorphism: Polymorphism can be achieved by defining methods with the same name in different classes. For example, you can create a Teacher class with a teach method and use it alongside the Student class's study method.
+class Teacher(Person):
+    def teach(self):
+        return f"{self.name} is teaching."
+
+teacher = Teacher("Eve", 35)
+print(teacher.introduce())  # Output: Hi, I'm Eve and I'm 35 years old.
+print(teacher.teach())      # Output: Eve is teaching.
+In conclusion, Object-Oriented Programming in Python allows you to create classes and objects that represent real-world entities while applying principles like inheritance, encapsulation, and polymorphism to make the code organized, reusable, and flexible.
